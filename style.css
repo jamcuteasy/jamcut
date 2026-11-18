@@ -69,7 +69,7 @@ main,.foot{position:relative;z-index:1}
 .display{font-size:clamp(40px,6.4vw,84px);line-height:1.08;letter-spacing:-.04em;font-weight:600;margin:26px 0 22px}
 .lead{max-width:640px;font-size:clamp(16px,1.5vw,19px);color:var(--muted);line-height:1.7}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
-.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:26px;font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--muted);text-shadow:0 0 8px rgba(12,10,18,.95),0 0 3px rgba(12,10,18,.95),0 1px 2px rgba(0,0,0,.8)}   /* 밝은 물결 위에서도 읽히게: 밝은 글씨 + 글자 둘레의 어두운 번짐 */
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:26px;font-family:var(--mono);font-size:12.5px;font-weight:500;color:#DCD6E6;text-shadow:0 0 2px rgba(10,8,16,1),0 0 5px rgba(10,8,16,.95),0 0 12px rgba(10,8,16,.9),0 1px 2px rgba(0,0,0,.9)}   /* 밝은 물결 위에서도 읽히게: 밝은 글씨 + 글자 둘레의 어두운 번짐 */
 .hero-meta li{display:flex;align-items:center;gap:8px}
 .hero-meta li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--violet);box-shadow:0 0 10px var(--violet)}
 
@@ -372,7 +372,7 @@ main,.foot{position:relative;z-index:1}
 .get-mark{width:60px;height:60px;filter:drop-shadow(0 12px 40px rgba(168,85,247,.7));animation:float 5s ease-in-out infinite}
 @keyframes float{50%{translate:0 -8px}}
 .get .display{font-size:clamp(36px,5.4vw,70px)}
-.get-note{margin-top:14px;min-height:1.5em;font:500 12.5px var(--mono);color:var(--muted);text-shadow:0 0 8px rgba(12,10,18,.95),0 0 3px rgba(12,10,18,.95),0 1px 2px rgba(0,0,0,.8)}
+.get-note{margin-top:14px;min-height:1.5em;font:500 12.5px var(--mono);color:#DCD6E6;text-shadow:0 0 2px rgba(10,8,16,1),0 0 5px rgba(10,8,16,.95),0 0 12px rgba(10,8,16,.9),0 1px 2px rgba(0,0,0,.9)}
 .donate{display:flex;align-items:center;gap:16px;margin-top:40px;padding:16px 16px 16px 20px;text-align:left;max-width:560px;width:100%;background:rgba(20,17,26,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .donate[hidden]{display:none}
 .donate-ic{width:30px;height:30px;flex:none;fill:none;stroke:var(--lav);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
