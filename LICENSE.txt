@@ -1,0 +1,91 @@
+﻿Jamcut 사용 조건 (License) — 한국어 / English below
+Copyright (c) 2026 윤왕민 (James Youn). All rights reserved.
+문의: jamecuteasy@gmail.com
+
+1. 무료 사용
+   누구나 Jamcut 을 무료로 설치해 쓸 수 있습니다. 개인·회사·제작사·대행사 모두 쓸 수 있고,
+   수익을 내는 영상 제작(유튜브 채널 운영, 의뢰받은 편집 등)에도 쓸 수 있습니다.
+
+2. 공유는 공식 링크로
+   다른 사람에게 Jamcut 을 알릴 때는 저작권자가 운영하는 공식 배포 페이지의 링크로 공유해 주세요.
+   설치 파일이나 프로그램 파일 자체를 다른 사이트·클라우드·메신저·게시판에 다시 올리거나 나눠 주는 것은 허락되지 않습니다.
+   (잘못 고쳐진 설치 파일이 퍼지는 것을 막고, 모두가 같은 최신 버전을 받게 하기 위해서입니다.)
+
+3. 하지 말아야 할 것
+   저작권자의 서면 허락 없이 다음을 할 수 없습니다.
+   - 이 프로그램을 판매·대여하거나, 다른 상품에 끼워 파는 것
+   - 이 프로그램을 수정하거나, 이를 바탕으로 다른 프로그램(파생물)을 만드는 것
+   - 역설계(역컴파일·분해·소스 추출)하거나 사용 제한 장치를 우회하는 것
+   - 이 프로그램 자체를 다른 사람이 쓰는 서비스(온라인 서비스 등)로 제공하는 것
+   Jamcut 으로 만든 영상·시퀀스 파일을 고객에게 납품하는 것은 위 금지에 해당하지 않습니다.
+
+4. 결과물
+   Jamcut 으로 만든 결과물(시퀀스 파일, 영상, 자막 등)에 대한 권리는 사용자가 촬영·제공한 원본 영상·음성·글의 권리를 따릅니다.
+   저작권자는 결과물에 대한 권리를 주장하지 않습니다.
+
+5. 제3자 구성요소
+   이 프로그램에 포함되거나 함께 쓰는 제3자 구성요소(글꼴, 받아쓰기 모델, ffmpeg, 오픈소스 라이브러리 등)에는 각자의 라이선스가 적용되며,
+   위 3항은 그 구성요소의 권리를 제한하지 않습니다. 글꼴의 라이선스 메모는 설치 폴더의 assets\fonts\FONT_LICENSES.txt 에 있습니다.
+   AI 연결(클로드·ChatGPT)을 쓰면 대본과 장면 이미지가 사용자가 고른 AI 서비스로 보내지며, 그 서비스의 약관이 적용됩니다.
+
+6. 보증의 제한
+   이 프로그램은 있는 그대로 무료로 제공되며, 법이 허용하는 범위에서 특정 목적에의 적합성·무결함을 보증하지 않습니다.
+   이 프로그램의 사용으로 생긴 손해(원본 파일 손상, 작업 시간 손실 등)에 대해 법이 허용하는 범위에서 책임지지 않습니다.
+   중요한 원본은 항상 따로 백업해 두세요(이 프로그램은 원본 촬영 파일을 읽기만 합니다).
+
+7. 조건의 변경과 종료
+   새 버전에는 다른 조건이 붙을 수 있습니다. 이미 받은 버전에는 그 버전에 들어 있던 조건이 적용됩니다.
+   이 조건을 어기면 사용 허락이 끝납니다.
+
+8. 언어
+   이 조건은 한국어와 영어로 제공됩니다. 두 글의 뜻이 다르면 한국어 글을 따릅니다.
+
+이 안내는 일반적인 사용 조건이며 법률 자문이 아닙니다.
+
+
+==========================================================================================
+
+Jamcut License — English
+Copyright (c) 2026 James Youn (윤왕민). All rights reserved.
+Contact: jamecuteasy@gmail.com
+
+1. Free to use
+   Anyone may install and use Jamcut free of charge. Individuals, companies, production studios and agencies may all use it,
+   including for commercial video work (running a YouTube channel, editing for clients, and so on).
+
+2. Share the official link
+   When you tell others about Jamcut, please share the link to the official download page run by the copyright holder.
+   You may not re-upload or hand out the installer or the program files themselves on other websites, cloud drives, messengers or forums.
+   (This keeps modified installers from spreading and makes sure everyone gets the same, latest version.)
+
+3. What you may not do
+   Without written permission from the copyright holder, you may not:
+   - sell or rent this program, or bundle it with another product;
+   - modify this program or create derivative programs based on it;
+   - reverse engineer it (decompile, disassemble, extract the source) or bypass any usage restriction;
+   - offer this program itself as a service for others to use (for example, as an online service).
+   Delivering videos or sequence files you made with Jamcut to your clients is not restricted by this section.
+
+4. Your output
+   Rights to anything you make with Jamcut (sequence files, videos, captions, etc.) follow the rights to the footage, audio and text
+   you recorded or supplied. The copyright holder claims no rights to your output.
+
+5. Third-party components
+   Third-party components included with or used by this program (fonts, the transcription model, ffmpeg, open-source libraries, etc.)
+   are under their own licenses, and section 3 does not limit the rights granted for those components. Font license notes are in
+   assets\fonts\FONT_LICENSES.txt in the install folder.
+   If you use the AI connection (Claude or ChatGPT), transcripts and scene images are sent to the AI service you chose, under that service's terms.
+
+6. No warranty
+   This program is provided free of charge and "as is". To the extent permitted by law, there is no warranty of fitness for a particular
+   purpose or of being free of defects, and the copyright holder is not liable for any damage arising from its use (such as damaged source
+   files or lost working time). Always keep separate backups of important originals (this program only reads your original footage).
+
+7. Changes and termination
+   New versions may come with different terms. A version you have already received stays under the terms included with it.
+   Your permission to use the program ends if you break these terms.
+
+8. Language
+   These terms are provided in Korean and English. If the two differ in meaning, the Korean text prevails.
+
+This is a general license notice, not legal advice.
