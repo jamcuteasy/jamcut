@@ -10,7 +10,7 @@
 
 const DOWNLOAD_URL = "https://github.com/jamcuteasy/jamcut/releases/latest/download/Jamcut_Setup.exe";   // 늘 최신 릴리스의 설치 파일
 
-const DOWNLOAD_NOTE = { ko: "무료 · 버전 3.0.0 · Windows 10/11 · 약 1.4GB", en: "Free · Version 3.0.0 · Windows 10/11 · about 1.4 GB" };
+const DOWNLOAD_NOTE = { ko: "무료 · 버전 3.0.1 · Windows 10/11 · 약 1.4GB", en: "Free · Version 3.0.1 · Windows 10/11 · about 1.4 GB" };
 
 const DONATE_URL = "https://ko-fi.com/jamcut";
 
