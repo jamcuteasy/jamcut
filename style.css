@@ -69,7 +69,7 @@ main,.foot{position:relative;z-index:1}
 .display{font-size:clamp(40px,6.4vw,84px);line-height:1.08;letter-spacing:-.04em;font-weight:600;margin:26px 0 22px}
 .lead{max-width:640px;font-size:clamp(16px,1.5vw,19px);color:var(--muted);line-height:1.7}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
-.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;width:fit-content;max-width:100%;margin:26px auto 0;padding:9px 20px;border-radius:999px;background:rgba(12,10,18,.66);border:1px solid rgba(255,255,255,.09);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-family:var(--mono);font-size:12.5px;color:var(--muted);text-shadow:0 1px 2px rgba(0,0,0,.6)}   /* 밝은 물결 위에서도 읽히게 어두운 유리 바탕 */
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:26px;font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--muted);text-shadow:0 0 8px rgba(12,10,18,.95),0 0 3px rgba(12,10,18,.95),0 1px 2px rgba(0,0,0,.8)}   /* 밝은 물결 위에서도 읽히게: 밝은 글씨 + 글자 둘레의 어두운 번짐 */
 .hero-meta li{display:flex;align-items:center;gap:8px}
 .hero-meta li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--violet);box-shadow:0 0 10px var(--violet)}
 
@@ -372,8 +372,7 @@ main,.foot{position:relative;z-index:1}
 .get-mark{width:60px;height:60px;filter:drop-shadow(0 12px 40px rgba(168,85,247,.7));animation:float 5s ease-in-out infinite}
 @keyframes float{50%{translate:0 -8px}}
 .get .display{font-size:clamp(36px,5.4vw,70px)}
-.get-note{width:fit-content;max-width:100%;margin:16px auto 0;min-height:1.5em;padding:7px 16px;border-radius:999px;background:rgba(12,10,18,.66);border:1px solid rgba(255,255,255,.09);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 12.5px var(--mono);color:var(--muted);text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.get-note:empty{background:none;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.get-note{margin-top:14px;min-height:1.5em;font:500 12.5px var(--mono);color:var(--muted);text-shadow:0 0 8px rgba(12,10,18,.95),0 0 3px rgba(12,10,18,.95),0 1px 2px rgba(0,0,0,.8)}
 .donate{display:flex;align-items:center;gap:16px;margin-top:40px;padding:16px 16px 16px 20px;text-align:left;max-width:560px;width:100%;background:rgba(20,17,26,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .donate[hidden]{display:none}
 .donate-ic{width:30px;height:30px;flex:none;fill:none;stroke:var(--lav);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -441,4 +440,3 @@ html[lang="en"] body{word-break:normal;overflow-wrap:break-word}
 @media (max-width:480px){.nav{gap:10px;padding:0 8px 0 12px}.nav .brand span{display:none}.nav .btn-sm{padding:0 12px;font-size:13.5px}}
 .why>.card,.bento>.card,.split2>.card,.modes>.card,.shorts>*{min-width:0}   /* 긴 영어 문장이 칸을 밀어내지 않게 */
 @media (max-width:760px){.craft li{white-space:normal;height:auto;margin-bottom:6px}.v-craft{height:auto;min-height:236px;padding-block:18px}}
-@media (max-width:760px){.hero-meta,.get-note{border-radius:16px}.hero-meta{gap:6px 16px;padding:10px 16px}}   /* 두 줄로 접히면 알약 대신 둥근 상자 */
