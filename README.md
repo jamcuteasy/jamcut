@@ -6,6 +6,7 @@
 
 - 홈페이지 / Website: https://jamcuteasy.github.io/jamcut/
 - 받기 / Download: [Releases](https://github.com/jamcuteasy/jamcut/releases/latest) → `Jamcut_Setup.exe` (Windows 10/11, NVIDIA GPU recommended)
+- 후원 / Support: https://ko-fi.com/jamcut
 - 문의 / Contact: jamecuteasy@gmail.com
 
 누구나 무료(일에도 사용 가능). 다른 사람에게는 이 페이지 링크로 알려 주세요 — [LICENSE.txt](LICENSE.txt).
