@@ -56,6 +56,7 @@
   <nav class="nav-links" aria-label="주요 메뉴" data-en-aria="Main menu">
     <a href="#why" data-en="Why Jamcut">특장점</a>
     <a href="#flow" data-en="Workflow">작업 흐름</a>
+    <a href="#nodes" data-en="Process map">처리 과정</a>
     <a href="#ai" data-en="AI usage">AI 사용</a>
     <a href="#shorts" data-en="Shorts">쇼츠</a>
     <a href="#features" data-en="Features">기능</a>
@@ -74,7 +75,7 @@
   <canvas class="voxel" id="voxel-hero" aria-hidden="true"></canvas>
   <div class="hero-veil" aria-hidden="true"></div>
   <div class="wrap hero-inner">
-    <a class="pill reveal" href="#shorts"><b>3.0</b><span data-en="New: English screen, transcription &amp; AI requests">새 기능: 영어 화면 · 영어 받아쓰기 · 영어 AI 요청서</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+    <a class="pill reveal" href="#shorts"><b>3.0</b><span data-en="New: process node map, DaVinci · Blender · CapCut export">새 기능: 처리 과정 노드 화면 · 다빈치 · 블렌더 · 캡컷 내보내기</span><svg class="ic"><use href="#i-arrow"/></svg></a>
     <h1 class="display split" data-en="Shooting’s done.&lt;br&gt;So is your edit prep.">촬영이 끝나면<br>편집 준비도 끝납니다.</h1>
     <p class="lead reveal" style="--d:.25s" data-en="Sync, audio cleanup, transcription, color matching and silence cuts all run on your PC, then land in Premiere as a ready sequence. AI is called only when a judgment call is needed.">싱크, 오디오 정리, 받아쓰기, 색 매칭, 무음 컷까지 PC가 알아서 끝내고 프리미어 시퀀스로 넘깁니다. AI는 판단이 필요한 순간에만 부릅니다.</p>
     <div class="cta-row reveal" style="--d:.35s">
@@ -225,6 +226,33 @@
   </div>
 </section>
 
+<!-- ───────── 처리 과정 노드 ───────── -->
+<section class="sec" id="nodes">
+  <div class="wrap">
+    <p class="eyebrow reveal">PROCESS MAP</p>
+    <h2 class="title split" data-en="See every step light up">단계가 켜지는 걸 눈으로 봅니다</h2>
+    <p class="sub reveal" data-en="Jamcut’s auto-process screen is a node map. Finished steps glow, light flows into the one that’s running, and each card tells you whether it’s you, your PC or an AI doing the work.">Jamcut의 자동 처리 화면은 노드 지도입니다. 끝난 단계는 켜지고, 지금 도는 단계로 빛이 흘러 들어갑니다. 카드마다 내가 할 일인지, PC가 하는 일인지, AI에 맡기는 일인지 함께 보입니다.</p>
+
+    <div class="card ng reveal" id="ng">
+      <div class="ng-scroll">
+        <div class="ng-board" id="ng-board" role="img" aria-label="자동 처리 단계 노드 지도" data-en-aria="Node map of the auto-process steps">
+          <svg class="ng-svg" id="ng-svg" aria-hidden="true"></svg>
+        </div>
+      </div>
+      <p class="ng-hint" data-en="Swipe sideways to see the whole map" >좌우로 밀면 전체 지도를 볼 수 있습니다</p>
+      <div class="ng-cap" id="ng-cap" aria-live="polite">
+        <span class="ng-who" id="ng-who"></span>
+        <div><h3 id="ng-t"></h3><p id="ng-d"></p></div>
+      </div>
+      <ul class="ng-legend">
+        <li><i class="you"></i><span data-en="You — only the first step">내가 하는 일 — 첫 단계뿐</span></li>
+        <li><i class="pc"></i><span data-en="Your PC — 0 credits">PC가 하는 일 — 크레딧 0</span></li>
+        <li><i class="ai"></i><span data-en="AI — optional, text only">AI에 맡기는 일 — 선택, 글만</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ───────── AI 사용 ───────── -->
 <section class="sec" id="ai">
   <div class="wrap">
@@ -347,7 +375,7 @@
       <article class="card f reveal" style="--d:.05s"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-audio&quot;/&gt;&lt;/svg&gt;Audio cleanup"><svg class="ic"><use href="#i-audio"/></svg>오디오 정리</h4><p data-en="Noise removal and loudness leveling. Clip volumes keep the mix below -3 dB.">노이즈 제거와 음량 평준화. 합쳐진 소리가 -3dB를 넘지 않게 클립 볼륨을 잡습니다.</p></article>
       <article class="card f reveal" style="--d:.1s"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-text&quot;/&gt;&lt;/svg&gt;Transcription"><svg class="ic"><use href="#i-text"/></svg>받아쓰기</h4><p data-en="Whisper large-v3 runs on your own graphics card. No credits spent.">Whisper large-v3가 내 그래픽카드에서 돕니다. 크레딧이 들지 않습니다.</p></article>
       <article class="card f reveal" style="--d:.15s"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-film&quot;/&gt;&lt;/svg&gt;Premiere-ready"><svg class="ic"><use href="#i-film"/></svg>프리미어 호환</h4><p data-en="XML opens in every Premiere version. Captions come in as an editable caption track.">XML은 모든 프리미어 버전에서 열립니다. 자막은 글자를 고칠 수 있는 캡션 트랙으로 들어갑니다.</p></article>
-      <article class="card f reveal"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-down&quot;/&gt;&lt;/svg&gt;Straight to MP4"><svg class="ic"><use href="#i-down"/></svg>MP4 바로 받기</h4><p data-en="No Premiere? Get an MP4 with captions, color and audio baked in.">프리미어가 없어도 자막, 색 보정, 소리를 합친 MP4로 받습니다.</p></article>
+      <article class="card f reveal"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-down&quot;/&gt;&lt;/svg&gt;No Premiere? No problem"><svg class="ic"><use href="#i-down"/></svg>프리미어 없이도</h4><p data-en="Get an MP4 with captions, color and audio baked in, or export for DaVinci Resolve (free), Blender or CapCut.">자막, 색 보정, 소리를 합친 MP4로 받거나, DaVinci Resolve(무료) · Blender · CapCut 용 파일로 내보냅니다.</p></article>
       <article class="card f reveal" style="--d:.05s"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-shield&quot;/&gt;&lt;/svg&gt;Originals protected"><svg class="ic"><use href="#i-shield"/></svg>원본 보호</h4><p data-en="Original footage is only ever read. All results go to the work folder.">촬영 원본은 읽기만 합니다. 결과는 전부 작업 폴더에 쌓입니다.</p></article>
       <article class="card f reveal" style="--d:.1s"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-skip&quot;/&gt;&lt;/svg&gt;Keeps going"><svg class="ic"><use href="#i-skip"/></svg>멈추지 않는 처리</h4><p data-en="If a step fails, it asks right there whether to skip and carry on. Finished steps aren’t re-run.">한 단계가 실패하면 건너뛰고 계속할지 그 자리에서 묻습니다. 끝난 단계는 다시 돌리지 않습니다.</p></article>
       <article class="card f reveal" style="--d:.15s"><h4 data-en="&lt;svg class=&quot;ic&quot;&gt;&lt;use href=&quot;#i-doc&quot;/&gt;&lt;/svg&gt;Clean transcripts"><svg class="ic"><use href="#i-doc"/></svg>정리된 대본</h4><p data-en="Every draft comes with a transcript stripped of filler words — ready for titles and descriptions.">안마다 군말을 걷어낸 대본을 함께 줍니다. 제목과 설명을 쓸 때 그대로 씁니다.</p></article>
@@ -371,7 +399,7 @@
         <div><dt data-en="OS">운영체제</dt><dd>Windows 10 · 11</dd></div>
         <div><dt data-en="Graphics card">그래픽카드</dt><dd data-en="NVIDIA (RTX recommended, GTX 10 series works)">NVIDIA (RTX 계열 권장, GTX 10 시리즈도 동작)</dd></div>
         <div><dt data-en="Disk">디스크</dt><dd data-en="About 10 GB per hour of footage">촬영 1시간당 약 10GB</dd></div>
-        <div><dt data-en="Editor">편집 프로그램</dt><dd data-en="Premiere Pro — or export to MP4 without it">Premiere Pro — 없으면 MP4로 받기</dd></div>
+        <div><dt data-en="Editor">편집 프로그램</dt><dd data-en="Premiere Pro — or MP4, DaVinci Resolve, Blender, CapCut">Premiere Pro — 없으면 MP4 · DaVinci Resolve · Blender · CapCut</dd></div>
         <div><dt>AI</dt><dd data-en="A Claude or ChatGPT account (optional steps only)">Claude 또는 ChatGPT 계정 (선택 단계에서만)</dd></div>
         <div><dt data-en="Speech language">받아쓰기 언어</dt><dd data-en="Korean · English (auto-detect available)">한국어 · 영어 (자동 판단 가능)</dd></div>
       </dl>

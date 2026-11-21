@@ -440,3 +440,54 @@ html[lang="en"] body{word-break:normal;overflow-wrap:break-word}
 @media (max-width:480px){.nav{gap:10px;padding:0 8px 0 12px}.nav .brand span{display:none}.nav .btn-sm{padding:0 12px;font-size:13.5px}}
 .why>.card,.bento>.card,.split2>.card,.modes>.card,.shorts>*{min-width:0}   /* 긴 영어 문장이 칸을 밀어내지 않게 */
 @media (max-width:760px){.craft li{white-space:normal;height:auto;margin-bottom:6px}.v-craft{height:auto;min-height:236px;padding-block:18px}}
+
+/* ── 처리 과정 노드 지도 ── */
+.ng{padding:0;overflow:hidden}
+.ng-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+.ng-board{position:relative;min-width:860px;background:#0E0B15;background-image:radial-gradient(rgba(177,158,239,.17) 1px,transparent 1.3px);background-size:22px 22px}
+.ng-svg{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+.ng-e path{fill:none;stroke:var(--c);stroke-linecap:round;transition:opacity .5s,stroke-width .5s}
+.ng-e .g3{stroke-width:9;opacity:.04}
+.ng-e .g2{stroke-width:5;opacity:.08}
+.ng-e .core{stroke-width:1.5;opacity:.3}
+.ng-e.lit .g3{opacity:.16}
+.ng-e.lit .g2{opacity:.3}
+.ng-e.lit .core{opacity:1;stroke-width:1.8}
+.ng-e .flow{stroke:#fff;stroke-width:3;stroke-dasharray:1 17;opacity:.95;filter:drop-shadow(0 0 4px var(--c));animation:ngflow .9s linear infinite}
+@keyframes ngflow{to{stroke-dashoffset:-18}}
+.nd{position:absolute;display:flex;flex-direction:column;justify-content:center;gap:1px;padding:7px 12px 7px 12px;border-radius:12px;background:rgba(26,21,36,.94);color:var(--text);font:inherit;text-align:left;cursor:default;
+  border:1px solid rgba(255,255,255,.1);transition:border-color .4s,box-shadow .4s,background .4s}
+.nd.ai{border-style:dashed;border-color:rgba(255,210,77,.42)}
+.nd-who{font:600 9.5px var(--mono);letter-spacing:.08em}
+.nd.you .nd-who{color:var(--hot)}
+.nd.pc .nd-who{color:var(--lav)}
+.nd.ai .nd-who{color:var(--warn)}
+.nd-t{font-size:13.5px;font-weight:600;letter-spacing:-.02em;line-height:1.25;white-space:nowrap;color:var(--dim);transition:color .4s}
+.nd-s{font:500 10.5px var(--mono);font-style:normal;color:var(--dim);transition:color .4s}
+.nd i{position:absolute;right:10px;top:10px;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .4s,box-shadow .4s}
+.nd.run{background:rgba(40,28,64,.96);border-color:rgba(177,158,239,.7);box-shadow:0 0 0 1px rgba(177,158,239,.25),0 0 28px -2px rgba(168,85,247,.55);animation:ngpulse 1.1s ease-in-out infinite}
+.nd.run .nd-t{color:var(--text)}
+.nd.run .nd-s{color:var(--lav)}
+.nd.run i{background:var(--lav);box-shadow:0 0 10px var(--lav)}
+.nd.ok{border-color:rgba(52,224,138,.4)}
+.nd.ok .nd-t{color:var(--text)}
+.nd.ok .nd-s{color:var(--good)}
+.nd.ok i{background:var(--good);box-shadow:0 0 10px rgba(52,224,138,.7)}
+.nd.cap{box-shadow:0 0 0 2px rgba(246,244,249,.55)}
+.nd.run.cap{box-shadow:0 0 0 2px rgba(246,244,249,.55),0 0 28px -2px rgba(168,85,247,.55)}
+@keyframes ngpulse{50%{box-shadow:0 0 0 1px rgba(177,158,239,.4),0 0 40px 2px rgba(168,85,247,.75)}}
+.ng-hint{display:none;margin:0;padding:8px 18px 0;font:500 11.5px var(--mono);color:var(--dim)}
+.ng-cap{display:flex;align-items:center;gap:18px;padding:18px 22px;min-height:96px;border-top:1px solid var(--line)}
+.ng-cap h3{margin:0 0 4px;font-size:18px}
+.ng-cap p{max-width:720px}
+.ng-who{flex:none;padding:6px 12px;border-radius:999px;font:600 12px var(--mono);letter-spacing:.02em;background:rgba(177,158,239,.12);color:var(--lav);box-shadow:inset 0 0 0 1px rgba(177,158,239,.3)}
+.ng-who.you{background:rgba(255,122,89,.12);color:var(--hot);box-shadow:inset 0 0 0 1px rgba(255,122,89,.35)}
+.ng-who.ai{background:rgba(255,210,77,.1);color:var(--warn);box-shadow:inset 0 0 0 1px rgba(255,210,77,.35)}
+.ng-legend{display:flex;flex-wrap:wrap;gap:8px 24px;padding:0 22px 18px;font-size:13px;color:var(--muted)}
+.ng-legend li{display:flex;align-items:center;gap:8px}
+.ng-legend i{width:9px;height:9px;border-radius:50%}
+.ng-legend i.you{background:var(--hot)}
+.ng-legend i.pc{background:var(--lav)}
+.ng-legend i.ai{background:var(--warn)}
+@media (max-width:900px){.ng-hint{display:block}.ng-cap{flex-direction:column;align-items:flex-start;gap:10px}}
+@media (prefers-reduced-motion:reduce){.nd.run{animation:none}.ng-e .flow{display:none!important}}

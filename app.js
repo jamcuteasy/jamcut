@@ -10,7 +10,7 @@
 
 const DOWNLOAD_URL = "https://github.com/jamcuteasy/jamcut/releases/latest/download/Jamcut_Setup.exe";   // 늘 최신 릴리스의 설치 파일
 
-const DOWNLOAD_NOTE = { ko: "무료 · 버전 3.0.1 · Windows 10/11 · 약 1.4GB", en: "Free · Version 3.0.1 · Windows 10/11 · about 1.4 GB" };
+const DOWNLOAD_NOTE = { ko: "무료 · 버전 3.0.2 · Windows 10/11 · 약 1.4GB", en: "Free · Version 3.0.2 · Windows 10/11 · about 1.4 GB" };
 
 const DONATE_URL = "https://ko-fi.com/jamcut";
 
@@ -1150,11 +1150,125 @@ const CONTACT = "jamecuteasy@gmail.com";
 
 
 
+  /* ───────── 처리 과정 노드 지도 ───────── */
+  function nodes() {
+    const host = $("#ng");
+    if (!host) return;
+    const board = $("#ng-board"), svg = $("#ng-svg"), who = $("#ng-who"), capT = $("#ng-t"), capD = $("#ng-d");
+    const NODES = [   // [키, 열, 행, 누가(you·pc·ai), 한국어 이름, 영어 이름, 한국어 안내, 영어 안내]
+      ["input", 0, 1.5, "you", "촬영 폴더", "Footage", "카메라 A – E와 오디오 A – E 폴더를 고르고 [처리 시작]을 누릅니다. 내가 하는 일은 여기까지입니다.", "Pick the camera A – E and audio A – E folders and press Start. That is everything you do."],
+      ["probe", 1, 1.5, "pc", "파일 조사", "Probe", "모든 파일의 길이, 프레임레이트, 촬영 시각을 읽습니다. 기다리기만 하면 됩니다.", "Reads the length, frame rate and recording time of every file. You just wait."],
+      ["sync", 2, 0.3, "pc", "싱크", "Sync", "소리 파형으로 카메라와 오디오를 맞추고, 긴 촬영의 시계 오차도 보정합니다.", "Aligns cameras and audio by waveform and corrects clock drift on long shoots."],
+      ["audio", 2, 2.0, "pc", "오디오 정리", "Audio", "노이즈를 걷어내고 음량을 고르게 맞춥니다.", "Removes noise and levels loudness."],
+      ["channels", 2, 3.2, "pc", "채널 점검", "Channels", "오디오 채널에 문제가 없는지 점검합니다.", "Checks the audio channels for problems."],
+      ["inserts", 3, -0.35, "pc", "인서트 후보", "Inserts", "인서트로 쓸 장면을 모아 장면 모음 이미지로 만듭니다.", "Collects scenes that could work as inserts into contact sheets."],
+      ["color", 3, 0.95, "pc", "색 매칭", "Color", "피부톤과 옷 색을 기준으로 보조 카메라를 카메라 A에 맞추고 구간별 LUT를 만듭니다.", "Matches secondary cameras to camera A by skin tone and clothing, with a LUT per section."],
+      ["transcribe", 3, 2.35, "pc", "받아쓰기", "Transcribe", "Whisper large-v3가 내 그래픽카드에서 받아씁니다. 크레딧이 들지 않습니다.", "Whisper large-v3 transcribes on your own graphics card. No credits."],
+      ["story", 4, 2.35, "pc", "대본", "Transcript", "블록 번호가 붙은 대본과, 군말을 걷어낸 정리된 대본을 만듭니다.", "Builds a numbered transcript and a clean one with filler words removed."],
+      ["ai", 4, 0.3, "ai", "AI 판단", "AI picks", "시나리오 3안, 인서트 위치, 색 검토는 AI가 고릅니다. 요청서를 붙여 넣고 마음에 드는 안을 고르세요. 건너뛰어도 됩니다.", "AI picks the 3 scenarios, insert spots and color review. Paste the request and choose the draft you like — or skip it."],
+      ["full", 5, 1.3, "pc", "전체 시퀀스", "Full sequence", "컷 전 전체 원본 시퀀스를 만들어 둡니다. 되돌리기용으로 항상 함께 나옵니다.", "Builds the full uncut sequence — always kept beside the cut one for rollback."],
+      ["out", 6, 1.3, "pc", "내보내기", "Export", "프리미어용 XML 이나 MP4, DaVinci Resolve · Blender · CapCut 용 파일로 내보냅니다. 열어서 컷 편집만 하면 됩니다.", "Exports a Premiere XML or an MP4, or files for DaVinci Resolve, Blender or CapCut. Open it and start cutting."],
+    ];
+    const EDGES = [["input", "probe"], ["probe", "sync"], ["probe", "audio"], ["probe", "channels"], ["sync", "inserts"], ["sync", "color"], ["audio", "transcribe"], ["channels", "transcribe"],
+      ["transcribe", "story"], ["story", "full"], ["color", "full"], ["inserts", "ai", 1], ["color", "ai", 1], ["ai", "full", 1], ["full", "out"]];
+    const GROUPS = [["input"], ["probe"], ["sync", "audio", "channels"], ["inserts", "color", "transcribe"], ["story"], ["ai"], ["full"], ["out"]];
+    const COLORS = ["#ff6fb1", "#19e3c6", "#4cc9ff", "#ffd23f", "#ff7a59", "#B19EEF"];
+    const STATE = { wait: ["대기", "Waiting"], run: ["진행 중", "Running"], ok: ["완료", "Done"] };
+    const WHO = { you: ["내가 하는 일", "What you do"], pc: ["PC가 하는 일 · 내 할 일 없음", "Your PC does this · nothing for you"], ai: ["AI에 맡기는 일 · 선택", "AI does this · optional"] };
+    const BADGE = { you: ["내 일", "YOU"], pc: ["PC", "PC"], ai: ["AI · 선택", "AI · OPT"] };
+    const NS = "http://www.w3.org/2000/svg";
+    const info = {}, state = {}, edgeEls = [];
+    NODES.forEach(([k, col, row, w, nk, ne, dk, de]) => { info[k] = { k, col, row, w, nk, ne, dk, de }; state[k] = "wait"; });
+    const el = {};
+    for (const k in info) {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "nd wait " + info[k].w; b.dataset.k = k;
+      b.innerHTML = '<b class="nd-who"></b><span class="nd-t"></span><em class="nd-s"></em><i></i>';
+      board.appendChild(b); el[k] = b;
+    }
+    let cur = "input", pinned = null, playing = false;
+
+    const paint = () => {
+      for (const k in info) {
+        const n = info[k], b = el[k];
+        b.querySelector(".nd-who").textContent = L(...BADGE[n.w]);
+        b.querySelector(".nd-t").textContent = L(n.nk, n.ne);
+        b.querySelector(".nd-s").textContent = L(...STATE[state[k]]);
+        b.className = "nd " + state[k] + " " + n.w + (k === (pinned || cur) ? " cap" : "");
+      }
+      const n = info[pinned || cur];
+      who.textContent = L(...WHO[n.w]); who.className = "ng-who " + n.w;
+      capT.textContent = L(n.nk, n.ne);
+      capD.textContent = L(n.dk, n.de);
+      edgeEls.forEach(({ a, b, g, flow }) => {
+        const on = state[a] === "ok", run = on && state[b] === "run";
+        g.classList.toggle("lit", on);
+        flow.style.display = run && !calm ? "" : "none";
+      });
+    };
+    const layout = () => {
+      const W = Math.max(board.clientWidth, 860), minRow = -0.35, maxRow = 3.2, pad = 20, nw = Math.min(132, (W - 2 * pad) / 7 * 0.84), nh = 62;
+      const stepX = (W - 2 * pad - nw) / 6, stepY = 80, H = (maxRow - minRow) * stepY + nh + 2 * pad;
+      board.style.height = H + "px";
+      svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+      svg.style.width = W + "px"; svg.style.height = H + "px";
+      const pos = {};
+      for (const k in info) {
+        const n = info[k], x = pad + n.col * stepX, y = pad + (n.row - minRow) * stepY;
+        el[k].style.cssText = `left:${x}px;top:${y}px;width:${nw}px;height:${nh}px`;
+        pos[k] = { x, y };
+      }
+      svg.innerHTML = ""; edgeEls.length = 0;
+      EDGES.forEach(([a, b, dash], i) => {
+        const x1 = pos[a].x + nw, y1 = pos[a].y + nh / 2, x2 = pos[b].x, y2 = pos[b].y + nh / 2, dx = Math.max(36, (x2 - x1) * 0.5);
+        const d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+        const g = document.createElementNS(NS, "g");
+        g.setAttribute("class", "ng-e"); g.style.setProperty("--c", COLORS[i % COLORS.length]);
+        const mk = (cls) => { const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("class", cls); g.appendChild(p); return p; };
+        mk("g3"); mk("g2"); const core = mk("core"); if (dash) core.setAttribute("stroke-dasharray", "5 6");
+        const flow = mk("flow"); flow.style.display = "none";
+        svg.appendChild(g); edgeEls.push({ a, b, g, flow });
+      });
+      paint();
+    };
+
+    const setGroup = (ks, st) => ks.forEach((k) => { state[k] = st; });
+    const reset = () => { for (const k in state) state[k] = "wait"; cur = "input"; };
+    layout(); onLang(paint);
+    let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(layout, 120); });
+    for (const k in el) {
+      const on = () => { pinned = k; paint(); }, off = () => { pinned = null; paint(); };
+      el[k].addEventListener("mouseenter", on); el[k].addEventListener("focus", on);
+      el[k].addEventListener("mouseleave", off); el[k].addEventListener("blur", off);
+    }
+    if (calm) { for (const k in state) state[k] = "ok"; paint(); return; }
+
+    let visible = false;
+    async function run() {
+      if (playing) return;
+      playing = true;
+      while (visible) {
+        reset(); paint(); await sleep(900);
+        for (const g of GROUPS) {
+          if (!visible) break;
+          cur = g[0]; setGroup(g, "run"); paint();
+          await sleep(g.length > 1 ? 1500 : 1100);
+          setGroup(g, "ok"); paint();
+        }
+        if (!visible) break;
+        cur = "out"; paint();
+        await sleep(5000);
+      }
+      playing = false;
+    }
+    whileVisible(host, () => { visible = true; run(); }, () => { visible = false; });
+  }
+
   /* ───────── 시작 ───────── */
 
   rememberKorean(); langButtons();
 
-  reveal(); nav(); marquee(); appDemo(); scenes(); flow(); pointerFx(); dots(); sparks();
+  reveal(); nav(); marquee(); appDemo(); scenes(); flow(); nodes(); pointerFx(); dots(); sparks();
 
   applyLang(LANG, false);
 
